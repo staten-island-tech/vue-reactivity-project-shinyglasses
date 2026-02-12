@@ -1,11 +1,11 @@
 <template>
     <div>
-       <h2>Goal</h2>
+       <h2 class="underline">Goal</h2>
        <h2>{{ goal.name }}</h2>
        <h2>{{ goal.status }}</h2>
-        <p>{{ goal.description }}</p>
+        <p class="italic">{{ goal.description }}</p>
       <button>Delete</button>
-        
+   
     </div>
 </template>
 

@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>Goal Creation</h1>
-        <form action="submit" @submit.prevent="addGoal(goal)">
+        <!-- <form action="submit" @submit.prevent="addGoal(goal)">
             <input type="text" placeholder="Goal Title" v-model="goal.name"/>
             <h2>Status:</h2>
             <select v-model="goal.status">
@@ -16,7 +16,8 @@
                 <option value="short-term">Short Term</option>
             </select>
             <button type="submit">Create Goal</button>
-        </form>
+        </form> --> 
+        <!--broken bc the goal stuff isnt made yet-->
     </div>
 </template>
 
