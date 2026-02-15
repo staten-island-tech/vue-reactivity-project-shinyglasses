@@ -1,18 +1,26 @@
 <template>
-    <div>
-       <h2 class="underline">Goal</h2>
-       <h2>{{ goal.name }}</h2>
-       <h2>{{ goal.status }}</h2>
+    <div class="bg-gray-100 text-center border-2 py-4 shadow-lg rounded-md w-3/12 m-auto my-5">
+       <h2 class="underline text-lg font-bold">{{ goal.name }}</h2>
+       <h2 class="mt-10">{{ toTitleCase(goal.status.replace(/-/g, ' '))}}</h2>
+       <h2>{{ toTitleCase(goal.timeline.replace(/-/g, ' ')) }}</h2>
         <p class="italic">{{ goal.description }}</p>
-      <button>Delete</button>
+      <button @click="$emit('deleteGoal')" class="hover:bg-red-700 my-2 bg-red-600 rounded-lg font-bold text-white p-2">Delete</button>
     </div>
 </template>
 
 <script setup>
- defineProps({
-    type: Object,
-    required: true
- })
+const props = defineProps({
+    goal: {
+        type: Object,
+        required: true
+    }})
+const emits = defineEmits(['deleteGoal'])
+function toTitleCase(str){
+    return str
+        .toLowerCase()
+        .replace(/\b\w/g, (c) => c.toUpperCase()); 
+}
+
 </script>
 
 <style scoped>

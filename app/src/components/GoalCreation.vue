@@ -5,7 +5,7 @@
             <h1 class="font-bold text-center">Goal Creation</h1>
             <button @click='$emit("close")' class="absolute right-0 top-0 font-bold">X</button>
         </div>
-        <form @submit.prevent="onSubmit" @submit="submitForm(formData)">
+        <form @submit.prevent="submitForm">
             <input class='rounded-lg my-2 p-1' type="text" placeholder="Goal Title" v-model="formData.name"/>
             <h2 class="my-3">Status:</h2>
             <select class='rounded-lg' v-model="formData.status">
@@ -27,10 +27,10 @@
 </template>
 
 <script setup>
-    import { ref } from 'vue';
+    import { reactive} from 'vue';
     const emits = defineEmits(['close', 'goalsArray'])
-    const goals = ref([])
-    const formData = ref(
+    
+    const formData = reactive(
         {
             'name': '',
             'status': '',
@@ -38,22 +38,16 @@
         }
     );
   
-    function submitForm(formData) {
+    function submitForm() {
         emits('goalsArray', formData)
-
-        addGoal(formData)
         emits('close')
+        formData.value = {
+            name: '',
+            status: '',
+            timeline: ''
+        }
     }
-    function addGoal(goal) {
-        goals.value.push({...goal});
-        formData.value = [
-            {
-                'name': '',
-                'status': '',
-                'timeline': ''
-            }
-        ];
-    }
+    
 </script>
 
 <style scoped>
